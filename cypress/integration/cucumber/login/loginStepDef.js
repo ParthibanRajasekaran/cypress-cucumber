@@ -23,10 +23,7 @@ import { Given,When,Then } from "cypress-cucumber-preprocessor/steps"
 	
 	When(/^I enter valid credentials$/, () => {
 		loginPage.getUserNameField().type(Cypress.env('username'))
-		loginPage.getPasswordField().type(Cypress.env('password'))
-	});
-	
-	When(/^Click on the login button$/, () => {
+		loginPage.getPasswordField().type(Cypress.env('password'), { log: false })
 		loginPage.getLoginButton().click()
 	});
 	
@@ -34,12 +31,13 @@ import { Given,When,Then } from "cypress-cucumber-preprocessor/steps"
 		cy.assertIfElementNotVisible('a > i')
 	})
 	
-	When(/^I enter invalid {username} {password}$/, (datatable) => {
-		datatable.hashes().forEach((element) => {
-			loginPage.getUserNameField().type(element.username)
-			loginPage.getPasswordField().type(element.password)
-		})
-	})
+	
+	When(/^I enter invalid "([^"]*)" "([^"]*)"$/, (username,password) => {
+		loginPage.getUserNameField().type(username)
+		loginPage.getPasswordField().type(password, { log: false })
+		loginPage.getLoginButton().click()
+	});
+
 	
 	Then(/^User must not be able to login$/, () => {
 		loginPage.getLofinFailureError().should('be.visible')

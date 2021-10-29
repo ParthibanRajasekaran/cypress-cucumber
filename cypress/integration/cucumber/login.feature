@@ -2,17 +2,19 @@ Feature: User Login
 
     User Authentication
 
+    @validCredentials
     Scenario: Login with valid credentials
     Given I open Login Page
     When I enter valid credentials
-    And Click on the login button
     Then User must be able to login
 
-    Scenario: Login with invalid credentials
+    @invalidCredentials
+    Scenario Outline: Login with invalid credentials
     Given I open Login Page
-    When I enter invalid {username} {password}
-    |username | password |
-    |username | password |
-    |123456   | 123456   |
-    And Click on the login button
+    When I enter invalid "<username>" "<password>"
     Then User must not be able to login
+
+    Examples:
+        |username | password |
+        |username | password |
+        |123456   | 123456   |

@@ -20,6 +20,10 @@ class LandingPage {
         return cy.get('li a[href="/login"]')
     }
 
+    getMultiWindowLink(){
+        return cy.get('li a[href="/windows"]')
+    }
+
 }
 
 export default LandingPage
