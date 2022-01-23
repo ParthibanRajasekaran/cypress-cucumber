@@ -1,4 +1,10 @@
-# cypress-cucumber [![Action status](https://github.com/cypress-io/github-action/workflows/main/badge.svg?branch=master)](https://github.com/ParthibanRajasekaran/cypress-cucumber/actions)
+# cypress-cucumber 
+  <p align="left">
+    <a href="https://github.com/ParthibanRajasekaran/cypress-cucumber/actions">
+      <img alt="Tests" src="https://github.com/ParthibanRajasekaran/cypress-cucumber/workflows/Cypress Tests/badge.svg" />
+    </a>
+    <br />
+  </p>
 
 Official documentation: [Cypress](https://docs.cypress.io)
 To know about recent Cypress feature click [here](https://www.cypress.io/features/)
