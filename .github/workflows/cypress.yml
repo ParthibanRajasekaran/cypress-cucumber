@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: [chrome, firefox, edge ]
+        browser: [chrome, firefox, electron, chromium ]
     # let's make sure our tests pass on Chrome browser
     name: ChromeTests on 
     steps:
