@@ -1,0 +1,22 @@
+name: E2E on Chrome
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        browser: [chrome, firefox, ]
+    # let's make sure our tests pass on Chrome browser
+    name: Tests on Chrome
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress test run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: ${{ matrix.browser }}
+          headless: true
