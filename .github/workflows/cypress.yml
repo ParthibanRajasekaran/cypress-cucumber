@@ -3,15 +3,18 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+  schedule:
+  # runs tests every day at 4am
+  - cron: '0 4 * * *'
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: [chrome, firefox, ]
+        browser: [chrome, firefox, edge ]
     # let's make sure our tests pass on Chrome browser
-    name: Tests on Chrome
+    name: ChromeTests on 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,3 +23,6 @@ jobs:
         with:
           browser: ${{ matrix.browser }}
           headless: true
+          env: configFile=int
+      - name: Cypress report generation 
+        run: node custom-reporter.js
