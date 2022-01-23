@@ -8,13 +8,12 @@ on:
   - cron: '0 4 * * *'
 
 jobs:
-  cypress-run:
+  cross-browser-testing:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         browser: [chrome, firefox, electron, chromium ]
-    # let's make sure our tests pass on Chrome browser
-    name: ChromeTests on 
+    name: Cypress tests using browser matrix.browser
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -24,12 +23,27 @@ jobs:
           browser: ${{ matrix.browser }}
           headless: true
           env: configFile=int
+
+  
+  chrome-test:
+    runs-on: ubuntu-latest
+    # let's make sure our tests pass on Chrome browser and report gets published
+    name: Cypress tests using chrome browser
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress test run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+          env: configFile=int
       - name: Cypress report generation 
         run: node custom-reporter.js
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cypress-cucumber/cypress/reports/cucumber-json/
+          publish_dir: ./cypress/reports/cucumber-json/
           user_name: 'github-actions[bot]'
-          user_email: 'rajasekaran.parthiban7@gmail.com'
+          user_email: 'rajasekaran.parthiban7@gmail.com'  
