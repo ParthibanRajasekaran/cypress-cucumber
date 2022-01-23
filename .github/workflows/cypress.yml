@@ -26,3 +26,10 @@ jobs:
           env: configFile=int
       - name: Cypress report generation 
         run: node custom-reporter.js
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./cypress-cucumber/cypress/reports/cucumber-json/
+          user_name: 'github-actions[bot]'
+          user_email: 'rajasekaran.parthiban7@gmail.com'
