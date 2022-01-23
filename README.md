@@ -1,4 +1,4 @@
-# cypress-cucumber
+# cypress-cucumber [![Action status](https://github.com/cypress-io/github-action/workflows/main/badge.svg?branch=master)](https://github.com/ParthibanRajasekaran/cypress-cucumber/actions)
 
 Official documentation: [Cypress](https://docs.cypress.io)
 To know about recent Cypress feature click [here](https://www.cypress.io/features/)
