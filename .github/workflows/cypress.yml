@@ -25,9 +25,9 @@ jobs:
           env: configFile=int
 
   edge-test:
-    runs-on: ubuntu-latest
-    # let's make sure our tests pass on Chrome browser and report gets published
-    name: Cypress tests using chrome browser
+    runs-on: windows-latest
+    # let's make sure our tests pass on Edge browser and report gets published
+    name: Cypress tests using edge browser
     steps:
       - name: Checkout
         uses: actions/checkout@v2
