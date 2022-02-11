@@ -23,6 +23,9 @@ jobs:
           browser: ${{ matrix.browser }}
           headless: true
           env: configFile=int
+          record: true
+        env:
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
   edge-test:
     runs-on: windows-latest
@@ -45,3 +48,6 @@ jobs:
           publish_dir: ./public
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+          record: true
+        env:
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
